@@ -21,4 +21,4 @@ jobs:
 
       - name: Build
         run: |
-             gcloud builds submit . --config=cloudbuild.yaml
+             gcloud builds submit . --config=codebuild.yaml
