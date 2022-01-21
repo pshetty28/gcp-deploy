@@ -1,0 +1,24 @@
+
+name: CI
+
+on:
+
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: self-hotsted
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Projectid
+        run: gcloud config set project us-gcp-ame-con-116-npd-1
+
+      - name: Build
+        run: |
+             gcloud builds submit . --config=cloudbuild.yaml
