@@ -1,0 +1,19 @@
+steps:
+
+      - name: 'gcr.io/cloud-builders/docker'
+
+        args: [ 'build', '-t', 'asia.gcr.io/$PROJECT_ID/trial-1' , '.']
+
+
+
+      - name: 'gcr.io/cloud-builders/docker'
+
+        args: ['push' , 'asia.gcr.io/$PROJECT_ID/trial-1']
+
+
+
+      - name: "gcr.io/cloud-builders/gcloud"
+
+        args: ['run', 'deploy', 'trial-1', '--image', 'asia.gcr.io/$PROJECT_ID/trial-1', '--memory', '300Mi', '--region', 'us-west2']
+
+logsBucket: 'gs://us-gcp-ame-con-116-npd-1_cloudbuild/trial-1'
